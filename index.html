@@ -159,28 +159,30 @@
 
         /* --- GALLERY セクション --- */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            overflow: hidden;
-            background-color: #eee;
-            position: relative;
-            padding-bottom: 135%;
-        }
-        .gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
+           display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ⬅️ ここを 3 分割に変更しました */
+    gap: 20px;
+    align-items: start;
+}
+.gallery-item {
+    overflow: hidden;
+    background-color: #eee;
+    position: relative;
+    padding-bottom: 135%;
+}
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
 .gallery-item.original-size {
     padding-bottom: 0; /* 固定枠を無くします */
     background-color: transparent; /* 背景のグレーを消します */
@@ -191,6 +193,13 @@
     height: auto; /* 写真本来の縦横比にします */
 }
 
+/* 👇 ここから携帯（スマホ）用の設定も一緒にここに足しておきます！ */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 携帯では自動で2つ並びになります */
+        gap: 12px;
+    }
+}
         /* --- WORKS セクション --- */
         .works-container {
             display: flex;
