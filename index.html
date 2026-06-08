@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>向ひなた | HINATA MUKAI OFFICIAL PORTFOLIO</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+.sns-list a i {
+    margin-right: 8px; /* アイコンの右側に少し隙間を作ります */
+    font-size: 1.1rem;  /* アイコンの大きさを文字よりほんの少しだけ大きくして見やすくします */
+}
+    <style>
+        /* --- 全体・基本スタイルのリセット --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background-color: #fafafa;
+            letter-spacing: 0.05em;
+        }
+        a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* --- ヘッダー（ナビゲーション） --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(250, 250, 250, 0.95);
+            padding: 15px 6rem 15px 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav ul li a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+        }
+Nav{
+    margin-left: auto;
+    margin-right: 10%; /* ⬅️ 右側の壁をさらに広げて、メニューだけを左にグッと押し込みます！ */
+}
+
+        /* --- メインコンテンツのレイアウト --- */
+        main {
+            margin-top: 80px;
+            padding: 40px 5%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        section {
+            padding: 40px 0 60px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background-color: #1a1a1a;
+            margin: 15px auto 0;
+        }
+
+        /* --- PROFILE セクション --- */
+        .profile-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        .profile-img-box {
+            flex: 1 1 380px;
+            text-align: center;
+        }
+        .profile-img-box img {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .profile-info-box {
+            flex: 1.2 1 450px;
+        }
+        .name-ja {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+        }
+        .name-en {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .profile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .profile-table th, .profile-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        .profile-table th {
+            width: 110px;
+            font-weight: 500;
+            color: #666;
+        }
+        .profile-table td {
+            color: #1a1a1a;
+        }
+        .biography {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.8;
+            border-left: 2px solid #1a1a1a;
+            padding-left: 15px;
+            margin-top: 25px;
+        }
+
+        /* --- GALLERY セクション --- */
+        .gallery-grid {
+           display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ⬅️ ここを 3 分割に変更しました */
+    gap: 20px;
+    align-items: start;
+}
+.gallery-item {
+    overflow: hidden;
+    background-color: #eee;
+    position: relative;
+    padding-bottom: 135%;
+}
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item.original-size {
+    padding-bottom: 0; /* 固定枠を無くします */
+    background-color: transparent; /* 背景のグレーを消します */
+}
+.gallery-item.original-size img {
+    position: static; /* 固定位置を解除します */
+    width: 100%;
+    height: auto; /* 写真本来の縦横比にします */
+}
+
+/* 👇 ここから携帯（スマホ）用の設定も一緒にここに足しておきます！ */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 携帯では自動で2つ並びになります */
+        gap: 12px;
+    }
+}
+        /* --- WORKS セクション --- */
+        .works-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .works-genre-block {
+            background-color: #ffffff;
+            padding: 35px 40px;
+            border-radius: 2px;
+            border: 1px solid #eaeaea;
+        }
+        .genre-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            border-left: 3px solid #1a1a1a;
+            padding-left: 12px;
+            line-height: 1.4;
+        }
+        .works-list {
+            list-style: none;
+        }
+        .works-list li {
+            font-size: 0.95rem;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .works-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .work-text {
+            color: #333;
+            flex: 1 1 300px;
+        }
+        .work-date-label {
+            font-size: 0.85rem;
+            color: #ffffff;
+            background-color: #333;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-right: 12px;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+        }
+        .work-inline-link {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+            padding: 4px 12px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .work-inline-link:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        /* --- CONTACT & SNS セクション --- */
+        .contact-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border: 1px solid #eaeaea;
+        }
+        .contact-box {
+            text-align: center;
+            margin-bottom: 45px;
+            padding-bottom: 35px;
+            border-bottom: 1px dashed #eaeaea;
+        }
+        .contact-text {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        .mail-link-btn {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 16px 45px;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        .mail-link-btn:hover {
+            background-color: #444444;
+            opacity: 1;
+        }
+        .sns-container-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 0.1em;
+        }
+        .sns-columns {
+           display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    width: 100%; /* ⬅️ 外枠いっぱいに広げる指定を足します */
+}
+.sns-column {
+    flex: 1 1 50%; /* ⬅️ 左右の幅を「完全に均等（半分ずつ）」に引き伸ばします */
+    background-color: #fafafa;
+    padding: 25px 30px; /* ⬅️ 横幅が広がるので、中の余白も少し広げてバランスを良くします */
+    border-radius: 2px;
+}
+        .sns-column h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 5px;
+            color: #1a1a1a;
+        }
+        .sns-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sns-list a {
+            font-size: 0.85rem;
+            color: #555;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+        }
+        .sns-list a:hover {
+            color: #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        /* --- フッター --- */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.75rem;
+            color: #999;
+            letter-spacing: 0.1em;
+            background-color: #ffffff;
+            border-top: 1px solid #eaeaea;
+        }
+
+        /* --- スマートフォン用レイアウト調整 --- */
+        @media (max-width: 768px) {
+            /* 〜 他のスタイル 〜 */
+
+    .sns-columns { 
+        flex-direction: column; /* ⬅️ 携帯で見るときは自動で縦一列に並べ替えます */
+        flex-wrap: wrap;        /* ⬅️ 横並びを解除します */
+        gap: 20px;              /* ⬅️ 縦に並んだときのボックス同士の隙間を調整します */
+    }
+    .sns-column {
+        flex: 1 1 100%;        /* ⬅️ 携帯の画面幅いっぱいに（100%）広げます */
+        padding: 20px;          /* ⬅️ 携帯用のすっきりした余白に調整します */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HINATA MUKAI OFFICIAL PORTFOLIO</div>
+        <nav>
+            <ul>
+                <li><a href="#profile">ABOUT</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#works">WORKS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="profile">
+            <h2 class="section-title">ABOUT</h2>
+            <div class="profile-wrapper">
+                <div class="profile-img-box">
+                    <img src="photo1.jpg" alt="向ひなた 宣材写真">
+                </div>
+                <div class="profile-info-box">
+                    <h1 class="name-ja">向ひなた</h1>
+                    <p class="name-en">HINATA MUKAI</p>
+                    
+                    <table class="profile-table">
+                        <tr>
+                            <th>生年月日</th>
+                            <td>1997年7月8日</td>
+                        </tr>
+                        <tr>
+                            <th>サイズ</th>
+                            <td>T: 165cm / B: 84 / W: 64 / H: 88 / S: 24.5cm</td>
+                        </tr>
+                        <tr>
+                            <th>出身地</th>
+                            <td>福井県</td>
+                        </tr>
+                        <tr>
+                            <th>学歴</th>
+                            <td>
+                                首都大学東京 都市環境学部 都市環境学科 分子応用科学コース 卒業<br>
+                                東京都立大学大学院 環境応用科学研究科 環境応用化学域 卒業
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>特技</th>
+                            <td>バドミントン、ピアノ</td>
+                        </tr>
+                        <tr>
+                            <th>趣味</th>
+                            <td>温泉銭湯巡り、海外旅行、サメ映画鑑賞</td>
+                        </tr>
+                        <tr>
+                            <th>資格</th>
+                            <td>普通自動車免許、温泉ソムリエ</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="biography">
+                        <strong>【自己PR】</strong><br>
+                        私は大学、大学院の計6年間、化学を学び、リチウムイオン電池の研究を行ってきました。大学院卒業後、一度就職をしまして、2年前に退職し俳優の道を選びました。お芝居へのスタートは遅いですが、大学での研究で得た、地道に根気強く取り組む精神を生かしたお芝居をしたいと思います。現在は、俳優業と並行して「のりのり&ひなひな」としてサイエンスショーを行っております。主に小学生を対象としたイベントで、化学にまつわる実験をお芝居と掛け合わせて行っています。大阪関西万博、北海道、鹿児島等、全国各地で行っております。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="main.jpg"></div>
+                <div class="gallery-item"><img src="photo3.jpg"></div>
+<div class="gallery-item"><img src="photo6.jpg"></div>
+                <div class="gallery-item"><img src="photo5.jpg"></div>
+ <div class="gallery-item"><img src="photo8.jpg"></div>
+<div class="gallery-item"><img src="photo7.jpg"></div>
+<div class="gallery-item original-size"><img src="photo9.png"></div>
+        <div class="gallery-item original-size"><img src="photo10.png"></div>
+ <div class="gallery-item original-size"><img src="photo2.jpg"></div>
+        
+            </div>
+        </section>
+
+        <section id="works">
+            <h2 class="section-title">WORKS</h2>
+            <div class="works-container">
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">ドラマ・映画</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">長編「音の雫」神崎夢香 役</span>
+                            <a href="https://www.instagram.com/p/DTq9n1jEmwK/?igsh=NXRoZG9yNmxybm5n" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">短編「キミと私の約束」主演：松永楓 役</span>
+                            <a href="https://youtu.be/gz_Mtqdujb4?si=tlVtGayfIhPqzLNl" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">The 48 Hour Film Project「来客は梅雨」主演</span>
+                            <a href="https://www.instagram.com/p/Cgg8ZjeJCYN/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">TBSテレビ「この初恋はフィクションです」生徒 役</span>
+                            <a href="https://www.instagram.com/p/CU2NzFmFsGF/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+  <li>
+                            <span class="work-text">TOKYO VOICE 受付役</span>
+                        </li>
+ <li>
+                            <span class="work-text">WOWWOW 殺意の道程 キャバ嬢役</span>
+                        </li>
+ <li>
+                            <span class="work-text">Memories 看護師たちの物語 看護師役</span>
+                        </li>
+ <li>
+                            <span class="work-text">妖怪シェアハウス 生霊役</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">テレビ</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">中居正広の金曜日のスマイルたちへ 再現VTR 編集者役</span>
+                            <a href="https://www.instagram.com/p/CkSzyfcp4Ov/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+<li>
+                            <span class="work-text">テレビ東京「ソレダメ!あなたの常識は非常識?」再現VTR</span>    
+                        </li>
+                        <li>
+                            <span class="work-text">らいこれTV ゲスト出演</span>
+                            <a href="https://www.instagram.com/p/CAcpgEPnQ6b/?igsh=MWR2bTJ0OG8ydTVheA==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">サイエンスショー</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2026.02</span>Qでんみらいスクール★九電科学実験イベント／サイエンスショー（主催：九州電力）</span>
+                            <a href="https://www.instagram.com/p/DUX4figD-io/?igsh=NGw4NzZia3N6Z3l4" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.12</span>カーボンニュートラルフェア in かごしま／サイエンスショー（鹿児島県鹿児島市）</span>
+                            <a href="https://www.instagram.com/p/DSzcRuZD5Xh/?igsh=MTEzeHl6ZmwxOWhrdQ==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.11</span>かごしままるごとフェス ワークショップ／サイエンスショー（鹿児島県南さつま市）</span>
+                            <a href="https://www.instagram.com/p/DRcGzWMD7sV/?igsh=aW9yejlrNm50aWs=" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.10</span>ふくしま水素エネルギー サイエンスショー（主催：福島県産業人材育成課）</span>
+                            <a href="https://www.instagram.com/p/DQGrgJrj2ao/?igsh=eTJ0aWJpZTdzcWM5" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.10</span>ボートレース若松 サイエンスショー（福岡県北九州市）</span>
+                            <a href="https://www.instagram.com/p/DQY5dZ9D7VQ/?igsh=MXRqczM0cHN3NzQyaQ==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.10</span>茜が丘複合施設イベント「みらフェス」 サイエンスショー（主催：兵庫県西脇市）</span>
+                            <a href="https://www.instagram.com/p/DPoAwVGDxtE/?igsh=MXQxdnlsaXBvMndueg==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.09</span>下水道の日フェスティバル2025｜のりのり＆ひなひなサイエンスショー（主催：東京都虹の下水道館）</span>
+                            <a href="https://www.instagram.com/p/DOvhQNmD6eF/?igsh=cHJyN3hxa2I1YXY4" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.08</span>夏休み自由研究ワークショップ｜オリジナルプラネタリウムを作ろう（主催：オリナス錦糸町）</span>
+                            <a href="https://www.instagram.com/p/DN-XdswDyie/?igsh=cTcxbGczaTFkamtr" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.08</span>大阪・関西万博 EXPOサイエンスショー｜大阪・関西万博 EXPOメッセ「WASSE」世界青少年発明工夫展2025 ダイキンブース内</span>
+                            <a href="https://www.instagram.com/p/DNVUN1tTOIn/?igsh=MXVnZGRjazN4dWE3Yg==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.08</span>夏休み 親子自由研究教室（主催：九州電力）</span>
+                            <a href="https://www.instagram.com/p/DNLHcjXzHPp/?igsh=dDk4cW5lZWNqdWg5" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.07</span>おもしろ科学館2025inほろのべ｜サイエンスキングダム（主催：経済産業省北海道経済産業局、幌延町）</span>
+                            <a href="https://www.instagram.com/p/DMxUxOHT93-/?igsh=dG9jNGJxczlxbHM0" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.07</span>再生可能エネルギーや地球温暖化がわかるサイエンスショー！（主催：福島県環境創造センター）</span>
+                            <a href="https://www.instagram.com/p/DMWrpV-TrNu/?igsh=b3MyenM0dnRsOGJ6" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text"><span class="work-date-label">2025.03</span>「ふくしま再エネファミリーラボ2025」（主催：福島県エネルギー課）</span>
+                            <a href="https://www.instagram.com/p/DHf8KSJzGCW/?igsh=MXN6NHExNGFlaTdzdQ==" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">CM</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">サントリー「金麦のオフ」</span>
+                            <a href="https://www.instagram.com/p/C7BhA29LEJv/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">GiGO</span>
+                            <a href="https://www.instagram.com/p/C5N6vWXPiG5/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">荒野行動</span>
+                            <a href="https://x.com/GAME_KNIVES_OUT/status/1417683880086147074?s=20" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+  <li>
+                            <span class="work-text">LINEヤフー</span>
+                        </li>
+                        <li>
+                            <span class="work-text">アクサ生命</span>
+                            <a href="https://www.instagram.com/p/CbeyZapL_Dj/?utm_source=ig_web_button_share_sheet" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">アラジンEC</span>
+                            <a href="https://youtu.be/RBNRjsbSXTk?si=gu3I_hg9s4YdQfm7" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">ミュージックビデオ (MV)</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">郷ひろみ「できるだけ、」</span>
+                            <a href="https://youtu.be/zOJSi8NVQMM?si=xYsyFbH50C7YXM8E" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">カンクロウ「日常」</span>
+                            <a href="https://youtu.be/y1mgIeZ-7FA?si=OdPTQvFhFHL3EOhS" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">Organic Call「Hello My Friend」</span>
+                            <a href="https://youtu.be/ZA4MhEuHi2s?si=Bbm_mT8-bjiJWU3l" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">アイリフドーパ「Traffic jam」</span>
+                            <a href="https://youtu.be/4y6I7VYAWxQ?si=a_Li_Z8CKiBLKE2u" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">YouTube 出演</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">特許庁 IP BASE</span>
+                            <a href="https://youtu.be/Z489PpIpykw?si=NrjA2n-HTRG--AR_" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+<li>
+                            <span class="work-text">「ラフらぼ」メインMC</span>
+  <a href="https://youtu.be/yhJ_7dRvCWE?si=HDYO_15sH1zKs60H" target="_blank" class="work-inline-link">詳細 →</a>
+                        <li>
+                            <span class="work-text">ダイエー「トップバリュ女子会」</span>
+                            <a href="https://youtu.be/ua7Hej1vPtw?si=uXbL1Jpl1e1MLUfk" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">EvisJap 大型企画「スコラージャパン第1話」</span>
+                            <a href="https://youtu.be/qnaBL9hnaNo?si=kqB2t_aUW8deNKuH" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">EvisJap 大型企画「スコラージャパン第2話」</span>
+                            <a href="https://youtu.be/Uvgl7sLlE6M?si=DjD36qJyrcoMMDQ8" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">EvisJap 大型企画「スコラージャパン第3話」</span>
+                            <a href="https://youtu.be/QMFX9clAWX0?si=1_mEaFKbz_qJGuvb" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">EvisJap 大型企画「スコラージャパン最終話」</span>
+                            <a href="https://youtu.be/QVhJV7v4zz8?si=kCerM9AQdKBm7dR5" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">ココから恋しよう 第2話</span>
+                            <a href="https://youtu.be/mVl223mUQ_U?si=nhdClgcqy8StItr5" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">舞台</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">三栄町×ACT舞台「ドライブ」恵 役</span>
+                            <a href="https://x.com/mukai_hinata78/status/1436289743751241741?s=20" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">ラジオ</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">東京FMラジオ「お台場レインボーステーション」</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="works-genre-block">
+                    <h3 class="genre-title">その他活動・受賞歴</h3>
+                    <ul class="works-list">
+                        <li>
+                            <span class="work-text">東京オリンピック福井県 聖火ランナー</span>
+                            <a href="https://x.com/mukai_hinata78/status/1399334511205179399?s=20" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">ゆかたクイーンコンテスト スタイリング賞</span>
+<a href="https://www.instagram.com/p/CERQ7DwnsVr/?img_index=3&igsh=Y2JuYnR4NWJiMnBj" target="_blank" class="work-inline-link">詳細 →</a>
+                        </li>
+                        <li>
+                            <span class="work-text">お台場シーサイドイメージガール 第17期</span>
+                        </li>
+ <li>
+                            <span class="work-text">ミスオブサークル ファイナリスト</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">CONTACT</h2>
+            <div class="contact-wrapper">
+                
+                <div class="contact-box">
+                    <p class="contact-text">お仕事のご依頼、その他お問い合わせは下記ボタンよりお願いいたします。</p>
+                    <a href="https://www.carrera-co.jp/contact.php" target="_blank" class="mail-link-btn">OFFICIAL CONTACT FORM</a>
+                </div>
+
+                <h3 class="sns-container-title">OFFICIAL SNS</h3>
+                <div class="sns-columns">
+                   <div class="sns-columns">
+    <div class="sns-column">
+        <h4>MUKAI HINATA</h4>
+        <ul class="sns-list">
+            <li><a href="https://www.instagram.com/mukai_hinata0708?igsh=bHgzY2kyeGUydXQ0&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://x.com/mukai_hinata78?s=21&t=7lIozti35UclPifRp_yF4w" target="_blank"><i class="fa-brands fa-x-twitter"></i> X </a></li>
+            <li><a href="https://youtube.com/@hina.tabilog?si=sdHN4CVOrSYlp0X6" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://www.tiktok.com/@mukai_hinata0708?_r=1&_t=ZS-96zRu02bIxB" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+        </ul>
+    </div>
+    <div class="sns-column">
+        <h4>化学オタクの日常</h4>
+        <ul class="sns-list">
+            <li><a href="https://www.instagram.com/kagakuotaku?igsh=MXVqbnVvdGZtMnk1dw%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@kagakuotaku?_r=1&_t=ZS-96zRv8b29GG" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HINATA MUKAI. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
